@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreFeedbackRequest;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 class FeedbackController extends Controller
 {
-    public function store(Request $request): JsonResponse
+    public function store(StoreFeedbackRequest $request): JsonResponse
     {
+        $data = $request->validated();
+
         return response()->json([
-            'message' => 'Feedback endpoint works',
-        ]);
+            'ok' => true,
+            'data' => $data,
+            'message' => 'Feedback accepted',
+        ], 201);
     }
 }
