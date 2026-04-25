@@ -45,10 +45,10 @@ const submitForm = async (): Promise<void> => {
         const localItem: FormItem = {
             name: name.value,
             message: message.value,
-            createdAt: new Date().toISOString(),
+            channel: channel.value,
         }
 
-        await store.dispatch('addForm', localItem)
+        store.dispatch('addForm', localItem)
 
         name.value = ''
         message.value = ''

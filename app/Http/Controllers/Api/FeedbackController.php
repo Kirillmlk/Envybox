@@ -27,6 +27,7 @@ class FeedbackController extends Controller
             'ok' => true,
             'data' => $data,
             'message' => 'Feedback accepted',
+            'channel' => $data['channel'],
         ], 201);
     }
 }

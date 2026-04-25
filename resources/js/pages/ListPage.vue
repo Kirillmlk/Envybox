@@ -18,6 +18,7 @@ const formsCount = computed<number>(() => store.getters.formsCount)
             <li v-for="(item, index) in forms" :key="index" class="rounded border border-gray-200 p-3">
                 <p class="font-medium">{{ item.name }}</p>
                 <p class="text-gray-700">{{ item.message }}</p>
+                <p class="text-sm text-gray-500">Канал: {{ item.channel }}</p>
             </li>
         </ul>
         <p v-else class="text-gray-500">Пока нет отправленных форм.</p>
