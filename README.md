@@ -53,7 +53,5 @@ npm run dev
 
 ## Скриншоты
 
-```md
-![Form page](./docs/images/1.png)
-![List page](./docs/images/2.png)
-```
+![Форма](docs/images/1.png)
+![Список](docs/images/2.png)
