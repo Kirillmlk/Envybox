@@ -20,8 +20,8 @@ class FeedbackController extends Controller
     {
         $data = $request->validated();
 
-        $saver = (new SaverFactory())->make($data['channel']);
-        $saver->save($data);
+        $factory = new SaverFactory($data['channel']);
+        $factory->save($data);
 
         return response()->json([
             'ok' => true,

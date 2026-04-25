@@ -8,12 +8,22 @@ use App\Services\Feedback\Savers\EmailSaver;
 
 readonly class SaverFactory
 {
-    public function make($channel): DatabaseSaver|EmailSaver
+    public function __construct(
+        private readonly string $channel
+    ) {}
+
+    public function save(array $data): void
     {
-        return match ($channel) {
+        $saver = $this->buildSaver();
+        $saver->save($data);
+    }
+
+    public function buildSaver(): DatabaseSaver|EmailSaver
+    {
+        return match ($this->channel) {
             'database' => new DatabaseSaver(),
             'email' => new EmailSaver(),
-            default => throw new \Exception('Not implemented')
+            default => throw new \InvalidArgumentException("Unsupported channel: {$this->channel}")
         };
     }
 
